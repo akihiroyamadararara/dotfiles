@@ -1,48 +1,60 @@
-"viとの互換モードをoff
-set nocompatible
-filetype off
+""viとの互換モードをoff
+"set nocompatible
+"filetype off
+"
+""起動時のみ読み込みたいものはここに
+"if has('vim_starting')
+"    set runtimepath+=~/.vim/bundle/neobundle.vim
+"
+"" NeoBundleを初期化
+"    call neobundle#begin(expand('~/.vim/bundle'))
+"endif
+""neobundle自体をnebundleで管理
+"NeoBundleFetch 'Shougo/neobundle.vim'
 
-"起動時のみ読み込みたいものはここに
-if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim
-
-" NeoBundleを初期化
-    call neobundle#begin(expand('~/.vim/bundle'))
+if &compatible
+    set nocompatible
 endif
-"neobundle自体をnebundleで管理
-NeoBundleFetch 'Shougo/neobundle.vim'
+
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+call dein#begin(expand('~/.vim/dein'))
+
+call dein#add('Shougo/dein.vim')
 
 " インストールするプラグインをここに記述
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'sgeb/vim-matlab'
-NeoBundle 'itchyny/lightline.vim'
-"NeoBundle 'tomasr/molokai'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'rhysd/vim-operator-surround'
-"NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'davidhalter/jedi-vim.git'
-
+call dein#add ('Shougo/unite.vim')
+call dein#add ('Shougo/vimfiler.vim')
+call dein#add ('sgeb/vim-matlab')
+call dein#add ('itchyny/lightline.vim')
+"call dein#addNeoBundle ('tomasr/molokai')
+call dein#add ('Shougo/neocomplete.vim')
+call dein#add ('Shougo/neosnippet')
+call dein#add ('Shougo/neosnippet-snippets')
+call dein#add ('Shougo/neocomplcache')
+call dein#add ('kana/vim-operator-user')
+call dein#add ('kana/vim-textobj-user')
+call dein#add ('rhysd/vim-operator-surround')
+"call dein#addNeoBundle ('Yggdroot/indentLine')
+call dein#add ('davidhalter/jedi-vim.git')
 "静的解析
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'vim-scripts/matlab.vim'
-NeoBundle 'vim-scripts/MatlabFilesEdition'
-"NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'thinca/vim-quickrun'
-"NeoBundle 'aperezdc/vim-template'
-"NeoBundle 'kristijanhusak/vim-hybrid-material'
-"NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'Haron-Prime/Antares'
-call neobundle#end()
+call dein#add ('scrooloose/syntastic')
+call dein#add ('vim-scripts/matlab.vim')
+call dein#add ('vim-scripts/MatlabFilesEdition')
+"call dein#addNeoBundle ('scrooloose/nerdtree')
+call dein#add ('thinca/vim-quickrun')
+"call dein#addNeoBundle ('aperezdc/vim-template')
+"call dein#addNeoBundle ('kristijanhusak/vim-hybrid-material')
+"call dein#addNeoBundle ('bronson/vim-trailing-whitespace')
+call dein#add ('tpope/vim-surround')
+call dein#add ('plasticboy/vim-markdown')
+call dein#add ('kannokanno/previm')
+call dein#add ('tyru/open-browser.vim')
+call dein#add ('Haron-Prime/Antares')
+call dein#add ('haya14busa/vim-open-googletranslate')
+"call neobundle#end()
+
+call dein#end()
 
 " ファイルタイプ別のプラグイン/インデントを有効にする
 filetype plugin on
@@ -96,6 +108,10 @@ syntax enable
     set guioptions-=L
     set guioptions-=b
     set splitright
+    ""タブページを常に表示
+    "set showtrabline=2
+    ""gVimでもテキストベースのタブページを使う
+    "set guioptions-=e
 
 
 
@@ -115,6 +131,11 @@ syntax enable
     nnoremap <silent> <Leader>- :vertical resize -10<CR>
     "" edit/reload .vimrc
     nnoremap <silent> <Space>ev :<C-u>edit ~/.vimrc<CR>
+
+
+    "google trans
+    nnoremap <silent><Space>gt :OpenGoogleTranslate<CR>
+
 
 
 
@@ -193,3 +214,5 @@ if executable('C')
     let g:quickrun_config.c  = {'exec': 'C -m %s %a'}
     let g:quickrun_config.cpp = {'exec': 'C -p %s %a'}
 endif
+
+
