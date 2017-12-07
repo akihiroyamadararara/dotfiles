@@ -4,7 +4,8 @@
 #local ⇒ remote
 
 mv ~/.vimrc ~/dotfiles/
-mv ~/.vim ~/dotfiles/
+
+#mv ~/.vim ~/dotfiles/
 
 #update.sh
 git status
