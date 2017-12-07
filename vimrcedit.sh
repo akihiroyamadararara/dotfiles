@@ -4,7 +4,7 @@
 #local ⇒ remote
 
 rm ~/dotfiles/.vimrc
-rm ~/dotfiles/.vim
+rm -rf ~/dotfiles/.vim
 
 
 mv ~/.vimrc ~/dotfiles/
