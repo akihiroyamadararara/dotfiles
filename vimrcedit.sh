@@ -3,6 +3,10 @@
 #.vimrcをホームディレクトリで編集してしまったときに走らせて下さい.
 #local ⇒ remote
 
+rm ~/dotfiles/.vimrc
+rm ~/dotfiles/.vim
+
+
 mv ~/.vimrc ~/dotfiles/
 mv ~/.vim ~/dotfiles/
 
